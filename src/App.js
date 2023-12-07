@@ -19,11 +19,10 @@ function App() {
       });
     };
 
-    // A threshold = 1.0 => When 100% of the target is visible within the element specified by the root option, the callback is invoked.
     const observer = new IntersectionObserver(handleIntersection, {
-      root: formRef.current,
+      root: formRef.current, //This is the ancestor of the target(s) (parent container)
       rootMargin: "0px",
-      threshold: 1.0,  //Adjust this value at your convenience
+      threshold: 1.0,  //Adjust this value at your convenience(threshold = 1.0 => When 100% of the target is visible within the element specified by the root option, the callback is invoked.)
     });
 
     formSections.forEach((section) => {
