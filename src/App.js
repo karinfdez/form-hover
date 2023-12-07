@@ -21,7 +21,7 @@ function App() {
 
     const observer = new IntersectionObserver(handleIntersection, {
       root: formRef.current,
-      threshold: 0.7,
+      threshold: 0.7, //Adjust this value at your convenience
     });
 
     formSections.forEach((section) => {
