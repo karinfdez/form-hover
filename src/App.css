@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
@@ -7,39 +6,44 @@ body {
 .App {
   display: flex;
   height: 100vh;
-  padding: 20px;
+  padding-top: 40px;
+  padding-left:20px;
+  padding-right:20px;
 }
 
 .form-container {
   width: 45%;
-  height: 50vh;
+  height: 600px;
   overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
   background-color: #f8f8f8;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  z-index: 1;
+  background: #FFF;
+  position:relative;
+  
 }
 
 .form-section {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
-/* Fixed positioning for the hover text */
-p {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1;
-  width: 45%;
+.form-section .sticky-section {
+  margin: 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom:20px;
+  padding-bottom:10px;
+  position:sticky;
+  top:0;
+  background: white;
+  display: flex;
+  align-items: center;
 }
+
 
 /* Additional styles for the form fields */
 label {
@@ -71,4 +75,61 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+/* StickyHeader.css */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #f8f8f8;
+  padding: 10px;
+  z-index: 1;
+  border: 1px solid #ccc;
+}
+
+.sticky-header h2 {
+  margin: 0;
+}
+
+/* FormComponent.css */
+.form-container {
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.form-section {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
+.floating-component {
+  height:40%;
+  width: 100%;
+  margin-left: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding-top:10px;
+  padding-bottom:20px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+.floating-content {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.floating-content h2 {
+  margin-bottom: 10px;
+  font:black;
 }

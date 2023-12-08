@@ -1,46 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './App.css';
-import FormComponent from './components/FormComponent';
-import HoverTextComponent from './components/HoverTextComponent';
-import { mockTextData } from './mockTextData'
+import React, { useState, useEffect, useRef } from "react";
+import "./App.css";
+import FormComponent from "./components/FormComponent";
+import HoverTextComponent from "./components/HoverTextComponent";
+import { mockTextData } from "./mockTextData";
 
 function App() {
-  const [hoverText, setHoverText] = useState('Hover over the form');
+  const [hoverText, setHoverText] = useState(mockTextData.section1);
+  const [currentSection, setCurrentSection] = useState("Section 1");
   const formRef = useRef(null);
 
   useEffect(() => {
-    const formSections = formRef.current.querySelectorAll('.form-section');
-
+    const formSections = formRef?.current?.querySelectorAll(".form-section");
     const handleIntersection = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          setCurrentSection(entry.target.getAttribute("data-section-name"));
           setHoverText(mockTextData[entry.target.id]);
         }
       });
     };
-
     const observer = new IntersectionObserver(handleIntersection, {
-      root: formRef.current, //This is the ancestor of the target(s) (parent container)
+      root: formRef.current,
       rootMargin: "0px",
-      threshold: 1.0,  //Adjust this value at your convenience(threshold = 1.0 => When 100% of the target is visible within the element specified by the root option, the callback is invoked.)
+      threshold: 1,
     });
-
-    formSections.forEach((section) => {
+    formSections?.forEach((section) => {
       observer.observe(section);
     });
-
     return () => {
       observer.disconnect();
     };
   }, []);
-
-  const handleLeave = () => {
-    setHoverText('Hover over the form');
-  };
-
   return (
     <div className="App">
-      <FormComponent ref={formRef} handleLeave={handleLeave} />
+      <FormComponent ref={formRef} currentSection={currentSection} />
       <HoverTextComponent text={hoverText} />
     </div>
   );
